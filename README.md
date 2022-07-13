@@ -1,5 +1,7 @@
 # nmaTSP_lstm_model
 
+![](Docs/data_pro.png)
+
 
 ### reference
 
