@@ -90,6 +90,23 @@ class data_pro:
 dd = data_pro("/home/nma/dev/","/home/nma/dev/outs/")
 
 
+
+
+
+
+class val_pro:
+    
+    def __init__(self,data_pro_out):
+        self.data = data_pro_out
+    
+    def create_cmb():
+        pass
+
+
+
+
+#%%
+    
 dtt = dd.gen_rts('10-01-2020','11-01-2020',['T','P','WS'])
 
 
