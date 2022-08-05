@@ -7,6 +7,8 @@ Created on Sat Jul  9 10:49:34 2022
 """
 import pandas as pd ; import numpy as np
 import glob ; import re
+
+
 #%%
 
 
@@ -16,7 +18,15 @@ class data_pro:
         self.in_dir = in_dir
         self.out_dir = out_dir        
        
-   
+        '''
+        gen_rts : Function for creating an random met/ocean datasets for
+        testing purpose 
+        currently have unrealistic random values
+        
+        ralistic location based climatologalical 
+        data will be generated in the future
+        
+        '''
     def gen_rts(self,start_time,end_time,variables):
         dt = pd.date_range(start_time,end_time,freq='10min')
         var_dict = {}
@@ -27,7 +37,7 @@ class data_pro:
                 var_dict['temp'] = temp
                 
             if ii == 'P':
-                pres = pd.Series(np.random.randint(12,32,size=len(dt)),
+                pres = pd.Series(np.random.randint(800,1012,size=len(dt)),
                                  name='pres')
                 var_dict['pres'] = pres
                 
@@ -50,6 +60,10 @@ class data_pro:
             
         return dft
 
+    '''
+    read_logger : function for reading logger data and relabel columns
+    
+    '''
     def read_logger(self):
         wd_files = glob.glob(self.in_dir + "*.wnd")
         def read_wnd(file):
@@ -82,7 +96,11 @@ class data_pro:
         n_dft = rename_lab(raw_dft)
         return n_dft
     
+    '''
+    read_custom : function for reading custom logger data like rpi , 
+    or smaller esp8266
     
+    '''
     
     def read_custom(self):
         pass
@@ -94,13 +112,28 @@ dd = data_pro("/home/nma/dev/","/home/nma/dev/outs/")
 
 
 
-class val_pro:
+class val_pro(data_pro):
     
     def __init__(self,data_pro_out):
-        self.data = data_pro_out
+        pass
+        
+    def range_test(self):
+        pass
+            
+    '''
+    create_cmb : create combine wind signals from primary are redundant sensors
+    
+    '''
     
     def create_cmb():
+        
         pass
+
+
+
+#%%
+
+
 
 
 
